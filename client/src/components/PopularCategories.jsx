@@ -52,7 +52,7 @@ export default function PopularCategories({ selectedCategory, onSelectCategory }
                 role="button"
                 tabIndex={0}
                 aria-pressed={isSelected}
-                aria-label={`${category.name}, ${category.count}${isSelected ? ' (active filter)' : ''}`}
+                aria-label={`${category.name}${isSelected ? ' (active filter)' : ''}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -75,7 +75,7 @@ export default function PopularCategories({ selectedCategory, onSelectCategory }
                       <Check size={12} /> Active
                     </span>
                   ) : (
-                    <span className="category-count-badge">{category.count}</span>
+                    <span className="category-count-badge">{category.tag || 'Explore'}</span>
                   )}
                 </div>
 

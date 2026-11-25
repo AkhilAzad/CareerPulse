@@ -4,20 +4,24 @@ import {
   MapPin,
   Briefcase,
   Sparkles,
-  Building2,
   CheckCircle2,
-  DollarSign,
   TrendingUp,
+  IndianRupee,
+  ShieldCheck,
+  Building2,
 } from 'lucide-react';
-import { PLATFORM_STATS, TRUSTED_COMPANIES } from '../data/mockData';
+import { INDIAN_CITIES } from '../utils/jobFormatters';
+import { FEATURED_INDIAN_HUBS } from '../data/mockData';
 
 const POPULAR_TAGS = [
   'React Developer',
-  'Remote',
-  'UI/UX Designer',
-  'DevOps',
-  'Product Manager',
-  'AI / Python',
+  'Bengaluru',
+  'Fresher / Intern',
+  'Full-Stack Node.js',
+  'Java / Spring',
+  'Remote India',
+  'Hyderabad',
+  'Pune',
 ];
 
 export default function Hero({
@@ -29,6 +33,7 @@ export default function Hero({
   setJobTypeFilter,
   onSearchSubmit,
   onSelectTag,
+  totalJobsCount = 0,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,16 +47,16 @@ export default function Hero({
         {/* Top Announcement Pill */}
         <div className="hero-pill-badge">
           <Sparkles size={16} className="pill-badge-icon" aria-hidden="true" />
-          <span className="pill-badge-text">Next-Gen Job Portal & Applicant Tracking System</span>
+          <span className="pill-badge-text">India's Modern Tech Job Portal & Applicant Tracking System</span>
         </div>
 
         {/* Hero Heading & Subtitle */}
         <h1 className="hero-title">
-          Find Your Next Career Move & <span className="gradient-text">Land High-Impact Roles</span>
+          Find Your Next Career Move & <span className="gradient-text">Land High-Impact Roles in India</span>
         </h1>
         <p className="hero-subtitle">
-          Connect with 4,200+ industry-leading teams. Explore verified high-paying roles with
-          transparent salary bands, one-click easy apply, and end-to-end application tracking.
+          Explore genuine openings across Bengaluru, Hyderabad, Pune, Mumbai, Delhi-NCR, and remote Indian hubs.
+          Transparent salary bands in INR (₹) and LPA, one-click easy apply, and direct ATS tracking.
         </p>
 
         {/* Search Bar Form */}
@@ -67,7 +72,7 @@ export default function Hero({
                 id="search-keyword"
                 type="text"
                 className="field-input"
-                placeholder="e.g. React Developer, Designer..."
+                placeholder="e.g. React Developer, Java, DevOps..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -76,21 +81,27 @@ export default function Hero({
 
           <div className="search-divider" aria-hidden="true" />
 
-          {/* Location Field */}
+          {/* Location Field with Indian Cities list */}
           <div className="search-field">
             <MapPin className="field-icon" size={20} aria-hidden="true" />
             <div className="field-input-wrapper">
               <label htmlFor="search-location" className="field-label">
-                Location
+                Indian City or Remote
               </label>
               <input
                 id="search-location"
                 type="text"
+                list="hero-indian-cities"
                 className="field-input"
-                placeholder="City, State, or 'Remote'"
+                placeholder="e.g. Bengaluru, Pune, or Remote"
                 value={locationQuery}
                 onChange={(e) => setLocationQuery(e.target.value)}
               />
+              <datalist id="hero-indian-cities">
+                {INDIAN_CITIES.map((c) => (
+                  <option key={c} value={c} />
+                ))}
+              </datalist>
             </div>
           </div>
 
@@ -101,7 +112,7 @@ export default function Hero({
             <Briefcase className="field-icon" size={20} aria-hidden="true" />
             <div className="field-input-wrapper">
               <label htmlFor="search-type" className="field-label">
-                Job Type
+                Employment Type
               </label>
               <select
                 id="search-type"
@@ -112,8 +123,12 @@ export default function Hero({
               >
                 <option value="All">All Types</option>
                 <option value="Full-time">Full-time</option>
+                <option value="Internship">Internship</option>
                 <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="On-site">On-site</option>
                 <option value="Contract">Contract</option>
+                <option value="Part-time">Part-time</option>
               </select>
             </div>
           </div>
@@ -127,7 +142,7 @@ export default function Hero({
 
         {/* Popular Search Tags */}
         <div className="popular-tags-container">
-          <span className="popular-tags-label">Trending searches:</span>
+          <span className="popular-tags-label">Popular in India:</span>
           <div className="popular-tags-list" role="list">
             {POPULAR_TAGS.map((tag) => (
               <button
@@ -142,36 +157,64 @@ export default function Hero({
           </div>
         </div>
 
-        {/* Platform Metric Stats */}
+        {/* Real Platform Capability Highlights (Zero Fabricated Metrics) */}
         <div className="hero-stats-grid">
-          {PLATFORM_STATS.map((stat, idx) => {
-            const icons = {
-              Briefcase: <Briefcase size={22} className="stat-icon" aria-hidden="true" />,
-              Building2: <Building2 size={22} className="stat-icon" aria-hidden="true" />,
-              CheckCircle2: <CheckCircle2 size={22} className="stat-icon" aria-hidden="true" />,
-              DollarSign: <DollarSign size={22} className="stat-icon" aria-hidden="true" />,
-            };
-            return (
-              <div key={idx} className="stat-card">
-                <div className="stat-icon-wrapper">{icons[stat.icon] || <TrendingUp size={22} aria-hidden="true" />}</div>
-                <div className="stat-content">
-                  <div className="stat-value">{stat.value}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
-              </div>
-            );
-          })}
+          <div className="stat-card">
+            <div className="stat-icon-wrapper">
+              <Briefcase size={22} className="stat-icon" aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <div className="stat-value">{totalJobsCount}</div>
+              <div className="stat-label">Live Verified Roles</div>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon-wrapper">
+              <IndianRupee size={22} className="stat-icon" aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <div className="stat-value">INR (₹) & LPA</div>
+              <div className="stat-label">Transparent Pay Bands</div>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon-wrapper">
+              <Building2 size={22} className="stat-icon" aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <div className="stat-value">Direct ATS</div>
+              <div className="stat-label">Verified Recruiter Postings</div>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon-wrapper">
+              <ShieldCheck size={22} className="stat-icon" aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <div className="stat-value">100% Free</div>
+              <div className="stat-label">For Candidates</div>
+            </div>
+          </div>
         </div>
 
-        {/* Trusted Companies Bar */}
+        {/* Featured Indian Tech Hubs */}
         <div className="trusted-by-section">
-          <p className="trusted-by-text">Leading tech companies hiring on CareerPulse</p>
+          <p className="trusted-by-text">Explore opportunities across major Indian hubs</p>
           <div className="trusted-companies-list">
-            {TRUSTED_COMPANIES.map((company, index) => (
-              <div key={index} className="trusted-company-item">
-                <span className="company-logo-dot" aria-hidden="true" />
-                <span className="company-name-text">{company}</span>
-              </div>
+            {FEATURED_INDIAN_HUBS.map((hub, index) => (
+              <button
+                key={index}
+                type="button"
+                className="trusted-company-item cursor-pointer"
+                onClick={() => onSelectTag(hub)}
+                title={`Filter jobs in ${hub}`}
+              >
+                <MapPin size={13} className="text-primary mr-1" aria-hidden="true" />
+                <span className="company-name-text">{hub}</span>
+              </button>
             ))}
           </div>
         </div>

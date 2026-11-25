@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
+
+# Private Secure Storage
+storage/
+uploads/
+

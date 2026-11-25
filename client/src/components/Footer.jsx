@@ -62,8 +62,7 @@ export default function Footer() {
           <div className="newsletter-text-content">
             <h3 className="newsletter-title">Get weekly curated job alerts</h3>
             <p className="newsletter-subtitle">
-              Join 65,000+ professionals receiving the latest engineering, design, and product
-              openings every Tuesday.
+              Subscribe for weekly curated engineering, design, and product openings across major Indian tech hubs.
             </p>
           </div>
 

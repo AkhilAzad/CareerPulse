@@ -44,7 +44,7 @@ export default function CallToAction({ onOpenAuth, onBrowseJobs }) {
             </div>
             <h3 className="cta-card-title">Hiring exceptional tech talent?</h3>
             <p className="cta-card-text">
-              Reach over 450,000 active candidates with our automated applicant tracking system,
+              Connect directly with verified talent across India using our integrated applicant tracking system,
               structured hiring stages, and one-click interview scheduling.
             </p>
             <div className="cta-card-buttons">

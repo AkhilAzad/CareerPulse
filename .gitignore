@@ -1,0 +1,23 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.env
+!*.env.example
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+
+# Editor files
+.vscode/
+.idea/
+.DS_Store
