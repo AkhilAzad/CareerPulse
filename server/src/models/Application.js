@@ -12,6 +12,7 @@ const secureResumeSchema = new mongoose.Schema(
       trim: true,
       maxlength: 255,
     },
+    
     storageKey: {
       type: String,
       required: [true, 'Storage key reference is required'],
