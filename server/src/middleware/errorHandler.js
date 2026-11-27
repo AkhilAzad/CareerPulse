@@ -12,6 +12,7 @@ const notFoundHandler = (req, res, next) => {
   });
 };
 
+
 /**
  * Centralized Global Error Handler - Returns standardized JSON errors
  */
