@@ -1,8 +1,5 @@
 const { FRONTEND_URL, NODE_ENV } = require('./env');
 
-/**
- * Build allowlist from FRONTEND_URL (supports single URL or comma-separated URLs)
- */
 const parseAllowedOrigins = () => {
   const defaults = [
     'http://localhost:5173',
@@ -16,7 +13,6 @@ const parseAllowedOrigins = () => {
     .map((origin) => origin.trim().replace(/\/+$/, ''))
     .filter(Boolean);
 
-  // Combine and deduplicate
   return Array.from(new Set([...defaults, ...userOrigins]));
 };
 
@@ -24,7 +20,7 @@ const allowedOrigins = parseAllowedOrigins();
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. mobile apps, curl, server-to-server, postman)
+
     if (!origin) {
       return callback(null, true);
     }
@@ -34,7 +30,6 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    // In development mode, allow localhost with any port
     if (NODE_ENV === 'development' && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(normalizedOrigin)) {
       return callback(null, true);
     }
