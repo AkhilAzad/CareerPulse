@@ -3,6 +3,7 @@ const { PORT, NODE_ENV, FRONTEND_URL } = require('./src/config/env');
 const { connectDB, disconnectDB, getDatabaseStatus } = require('./src/config/database');
 const { getSmtpStatus } = require('./src/utils/mailer');
 
+
 let server;
 const startServer = async () => {
   try {
@@ -11,6 +12,7 @@ const startServer = async () => {
 
     const dbStatus = getDatabaseStatus();
 
+    
     
     server = app.listen(PORT, () => {
       console.log('====================================================');
@@ -24,6 +26,7 @@ const startServer = async () => {
           console.log(`- DB Status:    ${dbStatus.error}`);
         }
       }
+      
       console.log(`- Port:         ${PORT}`);
       console.log(`- Environment:  ${NODE_ENV}`);
       console.log(`- Frontend URL: ${FRONTEND_URL}`);
