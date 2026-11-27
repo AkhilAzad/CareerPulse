@@ -14,6 +14,7 @@ const salaryRangeSchema = new mongoose.Schema(
           if (this.min != null && val != null) {
             return val >= this.min;
           }
+          
           return true;
         },
         message: 'Maximum salary must be greater than or equal to minimum salary',
