@@ -11,7 +11,7 @@ const startServer = async () => {
     await connectDB();
 
     const dbStatus = getDatabaseStatus();
-
+    
     
     
     server = app.listen(PORT, () => {
