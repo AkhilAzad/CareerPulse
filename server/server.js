@@ -9,6 +9,7 @@ const startServer = async () => {
   try {
     console.log('[CareerPulse ATS Server] Connecting to MongoDB Atlas...');
     await connectDB();
+  
 
     const dbStatus = getDatabaseStatus();
     
