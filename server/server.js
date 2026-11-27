@@ -4,18 +4,13 @@ const { connectDB, disconnectDB, getDatabaseStatus } = require('./src/config/dat
 const { getSmtpStatus } = require('./src/utils/mailer');
 
 let server;
-
-/**
- * Initialize and start the HTTP server.
- * Connects to MongoDB Atlas before declaring the backend fully ready.
- */
 const startServer = async () => {
   try {
     console.log('[CareerPulse ATS Server] Connecting to MongoDB Atlas...');
     await connectDB();
 
     const dbStatus = getDatabaseStatus();
-
+    
     server = app.listen(PORT, () => {
       console.log('====================================================');
       if (dbStatus.isConnected) {
