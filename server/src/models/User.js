@@ -14,6 +14,7 @@ const educationSchema = new mongoose.Schema(
       trim: true,
       maxlength: 100,
     },
+    
     fieldOfStudy: {
       type: String,
       trim: true,
